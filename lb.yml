@@ -1,0 +1,17 @@
+workspace:
+  base: /opt
+  path: web/pacman
+
+registry:
+  - name: pacman
+    settings:
+      auto_tag: true
+      auto_tag_suffix: release
+      dockerfile: "./Dockerfile"
+      secret:
+        password: docker_password
+        username: docker_username
+    when:
+      event:
+        - push
+        - tag
