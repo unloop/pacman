@@ -3,7 +3,7 @@ workspace:
   path: web/pacman
 
 pipeline:
-  - image: plugins/golang
+  - image: golang
     commands:
       - go get -t -v ./...
       - go test ./...
@@ -14,6 +14,14 @@ pipeline:
         - push
         - pull_request
         - tag
+  - plugin: slack
+    settings:
+      endpoint: "https://api.dummy.com/slack.send"
+      token: 
+        from_secret: "slack_auth"
+    when:
+      event:
+        - failed
 
 registry:
   - name: pacman
