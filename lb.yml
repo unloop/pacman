@@ -2,6 +2,19 @@ workspace:
   base: /opt
   path: web/pacman
 
+pipeline:
+  - image: plugins/golang
+    commands:
+      - go get -t -v ./...
+      - go test ./...
+    envs:
+      DEBUG: true
+    when:
+      event:
+        - push
+        - pull_request
+        - tag
+
 registry:
   - name: pacman
     settings:
