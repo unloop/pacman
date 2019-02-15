@@ -1,27 +1,6 @@
 workspace:
   base: /opt
-  path: web/pacman
-
-pipeline:
-  - image: golang
-    commands:
-      - go get -t -v ./...
-      - go test ./...
-    envs:
-      DEBUG: true
-    when:
-      event:
-        - push
-        - pull_request
-        - tag
-  - plugin: slack
-    settings:
-      endpoint: "https://api.dummy.com/slack.send"
-      token: 
-        from_secret: "slack_auth"
-    when:
-      event:
-        - failed
+  path: /
 
 registry:
   - name: pacman
