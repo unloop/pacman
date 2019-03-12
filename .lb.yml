@@ -1,0 +1,13 @@
+workspace:
+  base: /data/
+  path: /
+
+registry:
+  - name: pacman
+    settings:
+      auto_tag: true
+      dockerfile: "./Dockerfile"
+    when:
+      event:
+        - push
+        - tag
