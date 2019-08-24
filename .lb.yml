@@ -10,3 +10,8 @@ registry:
       event:
         - push
         - tag
+
+deploy:
+  - name: development
+    image: pacman
+    tag: latest
